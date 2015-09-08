@@ -20,7 +20,7 @@ public class CardsWithFriends {
                 System.out.println(deck[SUITS*i + j]);
             }
         }
-        
+       
         System.out.println();
         
         //shuffle
@@ -37,4 +37,5 @@ public class CardsWithFriends {
         }
     }
     
+ 
 }
