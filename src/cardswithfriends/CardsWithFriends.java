@@ -1,21 +1,40 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cardswithfriends;
 
-/**
- *
- * @author Harout
- */
 public class CardsWithFriends {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        String[] suit = {"Clubs", "Diamonds", "Hearts", "Spades"};
+        String[] rank = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", 
+            "Queen", "King", "Ace"};
+        
+        int SUITS = suit.length;
+        int RANKS = rank.length;
+        int N = SUITS * RANKS;
+        
+        //Initialize deck
+        String[] deck = new String[N];
+        for (int i = 0; i < RANKS; i++) {
+            for (int j = 0; j < SUITS; j++) {
+                deck[SUITS*i + j] = rank[i] + " of " + suit[j];
+                //print deck
+                System.out.println(deck[SUITS*i + j]);
+            }
+        }
+        
+        System.out.println();
+        
+        //shuffle
+        for (int i = 0; i < N; i++){
+            int r = i + (int) (Math.random() * (N-i));
+            String t = deck[r];
+            deck[r] = deck[i];
+            deck[i] = t;
+        }
+
+        //print shuffled deck
+        for (int i = 0; i < N; i++) {
+            System.out.println(deck[i]);
+        }
     }
     
 }
