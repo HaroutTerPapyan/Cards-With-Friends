@@ -13,7 +13,7 @@ public class CardsWithFriends {
     static int RANKS = rank.length;
     static int N = SUITS * RANKS;
     static String[] deck = new String[N];
-
+    static ArrayList garbage = new ArrayList();
 
 
     public static void main(String[] args) {
@@ -34,7 +34,7 @@ public class CardsWithFriends {
         String[] ptrDeck = new String[13]; //player three
         String[] pfDeck = new String[13]; //player four
 
-
+        System.out.println("Dealing cards: ");
         playerOne(poDeck);
         System.out.println("Player One: " + Arrays.toString(poDeck));
         playerTwo(ptDeck);
@@ -48,35 +48,56 @@ public class CardsWithFriends {
 
         int min = 0;
         int max = 12;
+        int maxX = 12;
+        int maxY = 12;
+        int maxZ = 12;
         int k = 0;
+        int x,y,z;
         while (k <= 12) {
             System.out.println();
             Scanner input = new Scanner(System.in);
+
             System.out.println("Enter a value from 0 to " + max + " to play a card");
             String inp = input.nextLine();
             int in = Integer.parseInt(inp);
-            System.out.println(poDeck[in]);
 
-            System.out.println("Player two plays: " + ptDeck[randomWithRange(min, max)]);
-            System.out.println("Player three plays: " + ptDeck[randomWithRange(min, max)]);
-            System.out.println("Player four plays: " + ptDeck[randomWithRange(min, max)]);
+            if (garbage.contains(poDeck[in])) {
+                System.out.println("You have already played that hand, please choose another ");
+                inp = input.nextLine();
+                in = Integer.parseInt(inp);
+                garbage.add(poDeck[in]);
+                System.out.println(poDeck[in]);
+            }
+            else {
+                garbage.add(poDeck[in]);
+                System.out.println(poDeck[in]);
+            }
+
+
+            x=randomWithRange(min,maxX);
+            while(garbage.contains(ptDeck[x])) {
+                x = randomWithRange(min, maxX);
+            }
+            System.out.println("Player two plays: " + ptDeck[x]);
+            garbage.add(ptDeck[x]);
+
+
+            y=randomWithRange(min,maxY);
+            while(garbage.contains(ptrDeck[y])) {
+                y = randomWithRange(min, maxY);
+            }
+            System.out.println("Player three plays: " + ptrDeck[y]);
+            garbage.add(ptrDeck[y]);
+
+
+            z=randomWithRange(min,maxZ);
+            while(garbage.contains(pfDeck[z])) {
+                z = randomWithRange(min, maxZ);
+            }
+            System.out.println("Player four plays: " + pfDeck[z]);
+            garbage.add(pfDeck[z]);
+
             k++;
-            max--;
-
-            /*
-            method 1: put played card into garbage[]
-            check if next played card is in garbage[]
-            call randomWithRange until new card
-            */
-
-            /*
-            method 2: number check during input
-            check if number played, if played, play another
-            */
-
-            /*
-            method 3: use an ArrayList because im an idiot
-             */
 
         }
 
@@ -158,4 +179,5 @@ public class CardsWithFriends {
         int range = (max-min) + 1;
         return (int)(Math.random()*range) + min;
     }
+
 }
