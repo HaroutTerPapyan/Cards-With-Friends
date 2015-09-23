@@ -29,6 +29,8 @@ public class CardsWithFriends {
             System.out.println(deck[i]);
         }
 */
+
+
         String[] poDeck = new String[13]; //player one
         String[] ptDeck = new String[13]; //player two
         String[] ptrDeck = new String[13]; //player three
@@ -43,7 +45,6 @@ public class CardsWithFriends {
         System.out.println("Player Three: " + Arrays.toString(ptrDeck));
         playerFour(pfDeck);
         System.out.println("Player Four: " + Arrays.toString(pfDeck));
-
 
 
         int min = 0;
@@ -109,7 +110,7 @@ public class CardsWithFriends {
             for (int j = 0; j < SUITS; j++) {
                 deck[SUITS*i + j] = rank[i] + " of " + suit[j];
                 //print deck
-                //System.out.println(deck[SUITS*i + j]);
+                System.out.println(deck[SUITS*i + j]);
             }
         }
         return iDeck;
@@ -163,7 +164,7 @@ public class CardsWithFriends {
     }
 
     public static String[] playerFour(String[] pfDeck) {
-        //p3 39-51
+        //p4 39-51
         int i = 0;
         while(i <= 12) {
             for (int j = 39; j <= 51; j++) {
