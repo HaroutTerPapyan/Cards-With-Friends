@@ -3,8 +3,9 @@ package cardswithfriends;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.applet.Applet;
 
-public class CardsWithFriends {
+public class CardsWithFriends extends Applet {
     static String[] suit = {"Clubs", "Spades", "Hearts", "Diamonds"};
     static String[] rank = {"3", "4", "5", "6", "7", "8", "9", "10", "Jack",
             "Queen", "King", "Ace", "2"};
